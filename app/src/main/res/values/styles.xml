@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <style name="PortalTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/darkGreen</item>
+    <item name="colorPrimaryDark">@color/darkGreen</item>
+    <item name="android:textColorPrimary">@color/black</item>
+</style> </resources>
