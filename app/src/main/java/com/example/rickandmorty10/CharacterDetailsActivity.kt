@@ -2,6 +2,7 @@ package com.example.rickandmorty10
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,11 @@ class CharacterDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character_details)
+
+        val backButton = findViewById<Button>(R.id.back_button)
+        backButton.setOnClickListener {
+            finish() // Closes the current activity
+        }
 
         // Get references to views (assuming IDs are in layout file)
         characterImage = findViewById(R.id.character_image)

@@ -7,12 +7,24 @@
     android:background="@color/darkishGreen"
     tools:context=".CharacterDetailsActivity">
 
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="158dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="620dp"
+        android:background="@drawable/go_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/portal_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/darkGreen"
         android:scaleType="center"
-        android:background="@color/darkGreen"/>
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-33dp" />
 
     <ImageView
         android:id="@+id/character_image"
