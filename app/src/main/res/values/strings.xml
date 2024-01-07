@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">R&amp;M Wiki</string>
+    <string name="disconnected">NO INTERNET CONNECTION\n\nPLEASE TRY AGAIN LATER :(</string>
 </resources>
