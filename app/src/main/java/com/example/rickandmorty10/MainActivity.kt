@@ -32,19 +32,19 @@ class MainActivity : ComponentActivity() {
         recyclerView.adapter = adapter
 
         val charactersList = mutableListOf<Result>() // Store all characters
+        val allCharacters = mutableListOf<Result>()
 
-        for (page in 0..42) {
+        for (page in 1..42) {
             RetrofitInstance.api.getDetails(page).enqueue(object : Callback<RickMorty> {
                 override fun onResponse(call: Call<RickMorty>, response: Response<RickMorty>) {
                     if (response.isSuccessful && response.body() != null) {
-                        val newCharacters = response.body()!!.results
-                        charactersList.addAll(newCharacters)
+                        allCharacters.addAll(response.body()!!.results)
+                    }
 
-                        if (page == 42) {
-                            adapter.setData(charactersList)
-                        }
-                    } else {
-                        // Handle errors
+                    if (page == 42) { // All pages loaded
+                        charactersList.addAll(allCharacters.sortedBy { it.created }) // Sort by name (adjust as needed)
+                        adapter.setData(charactersList)
+                        adapter.notifyDataSetChanged()
                     }
                 }
 
