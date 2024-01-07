@@ -30,20 +30,28 @@ class MainActivity : ComponentActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         recyclerView.adapter = adapter
-        RetrofitInstance.api.getDetails().enqueue(object :Callback<RickMorty>{
-            override fun onResponse(call: Call<RickMorty>, response: Response<RickMorty>) {
-                if (response.body()!=null){
-                    adapter.setData(response.body()!!.results)
-                }
-                else{
-                    return
-                }
-            }
 
-            override fun onFailure(call: Call<RickMorty>, t: Throwable) {
-                Log.d("TAG",t.message.toString())
-            }
+        val charactersList = mutableListOf<Result>() // Store all characters
 
-        })
+        for (page in 0..42) {
+            RetrofitInstance.api.getDetails(page).enqueue(object : Callback<RickMorty> {
+                override fun onResponse(call: Call<RickMorty>, response: Response<RickMorty>) {
+                    if (response.isSuccessful && response.body() != null) {
+                        val newCharacters = response.body()!!.results
+                        charactersList.addAll(newCharacters)
+
+                        if (page == 42) {
+                            adapter.setData(charactersList)
+                        }
+                    } else {
+                        // Handle errors
+                    }
+                }
+
+                override fun onFailure(call: Call<RickMorty>, t: Throwable) {
+                    // Handle network errors
+                }
+            })
+        }
     }
 }

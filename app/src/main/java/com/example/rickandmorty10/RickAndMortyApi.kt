@@ -12,7 +12,7 @@ interface RickApi  {
     // HTTP GET request to the character endpoint
     // https://rickandmortyapi.com/api/character
     @GET("character")
-    fun getDetails() : Call<RickMorty>
+    fun getDetails(@Query("page") page: Int) : Call<RickMorty>
 }
 
 // Object that holds a single
