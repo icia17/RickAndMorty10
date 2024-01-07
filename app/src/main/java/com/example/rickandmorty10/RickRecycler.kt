@@ -1,5 +1,6 @@
 package com.example.rickandmorty10
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Parcelable
 import android.view.LayoutInflater
@@ -14,10 +15,11 @@ import de.hdodenhof.circleimageview.CircleImageView
 class RickRecycler : RecyclerView.Adapter<RickRecycler.ViewHolder>() {
 
     // List of characters to display
-    var list = ArrayList<Result>()
+    private var list = ArrayList<Result>()
 
     // Set the data for the adapter and
     // notify the RecyclerView of the change
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(list: List<Result>) {
         this.list = list as ArrayList<Result>
         notifyDataSetChanged()
@@ -25,8 +27,8 @@ class RickRecycler : RecyclerView.Adapter<RickRecycler.ViewHolder>() {
 
     // Initialise single item using view holder class
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val characterImage = view.findViewById<CircleImageView>(R.id.characterImage)  // Assuming CircleImageView
-        val name = view.findViewById<TextView>(R.id.showName)
+        val characterImage: CircleImageView = view.findViewById(R.id.characterImage)  // Assuming CircleImageView
+        val name: TextView = view.findViewById(R.id.showName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

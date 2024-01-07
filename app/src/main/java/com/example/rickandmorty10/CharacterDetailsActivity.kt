@@ -1,11 +1,13 @@
 package com.example.rickandmorty10
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 
+@Suppress("DEPRECATION")
 class CharacterDetailsActivity : AppCompatActivity() {
 
     private lateinit var characterImage: ImageView
@@ -15,6 +17,7 @@ class CharacterDetailsActivity : AppCompatActivity() {
     private lateinit var characterFirstSeen: TextView
     private lateinit var characterSpecies: TextView
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character_details)
@@ -29,7 +32,6 @@ class CharacterDetailsActivity : AppCompatActivity() {
 
         // Retrieve character data from intent (assuming Result is Parcelable)
         val character = intent.getParcelableExtra<Result>("character")
-        val characterLocation = intent.getParcelableExtra<Location>("characterLocation")
 
         // Display character information
         if (character != null) {
